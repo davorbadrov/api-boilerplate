@@ -1,0 +1,30 @@
+{
+  "name": "api-boilerplate",
+  "version": "0.0.1",
+  "description": "A HapiJS based boilerplate for faster starting a project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/davorbadrov/api-boilerplate.git"
+  },
+  "keywords": [
+    "node",
+    "hapi",
+    "api"
+  ],
+  "author": "Davor Badrov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davorbadrov/api-boilerplate/issues"
+  },
+  "homepage": "https://github.com/davorbadrov/api-boilerplate#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "hapi": "^16.5.2",
+    "joi": "^10.6.0",
+    "lodash": "^4.17.4"
+  }
+}
