@@ -1,8 +1,15 @@
 const joi = require('joi');
 const { pick, mapKeys, camelCase } = require('lodash');
 
+
 module.exports = getConfig(process.env);
 
+/**
+ * Returns object with only validated env variables in camel casing
+ * 
+ * @param  {object} enviromentVariables  takes process.env 
+ * @return {object}                      object with camel cased validated params
+ */
 function getConfig(enviromentVariables) {
     const config = validateEnvVariables(enviromentVariables);
     const camelCasedEnv = convertEnvKeysToCamelCase(config);
