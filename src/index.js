@@ -1,5 +1,6 @@
 const Hapi = require('hapi');
-const config = require('./lib/config');
+const getConfig = require('./lib/config');
+const config = getConfig(process.env);
 const server = new Hapi.Server();
 
 server.connection({ port: config.appPort });
