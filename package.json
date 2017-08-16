@@ -1,52 +1,58 @@
 {
-    "name": "api-boilerplate",
-    "version": "0.0.1",
-    "description": "A HapiJS based boilerplate for faster starting a project",
-    "main": "index.js",
-    "scripts": {
-        "start": "node index.js",
-        "test": "jest --coverage",
-        "test:watch": "jest --watch",
-        "format": "prettier-standard 'src/**/*.js'",
-        "precommit": "lint-staged"
-    },
-    "lint-staged": {
-        "linters": {
-            "src/**/*.js": [
-                "prettier-standard",
-                "git add"
-            ]
-        }
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+ssh://git@github.com/davorbadrov/api-boilerplate.git"
-    },
-    "keywords": [
-        "node",
-        "hapi",
-        "api"
-    ],
-    "author": "Davor Badrov",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/davorbadrov/api-boilerplate/issues"
-    },
-    "homepage": "https://github.com/davorbadrov/api-boilerplate#readme",
-    "dependencies": {
-        "blipp": "^2.3.0",
-        "boom": "^5.2.0",
-        "dotenv": "^4.0.0",
-        "good": "^7.2.0",
-        "good-console": "^6.4.0",
-        "hapi": "^16.5.2",
-        "joi": "^10.6.0",
-        "lodash": "^4.17.4"
-    },
-    "devDependencies": {
-        "husky": "^0.14.3",
-        "jest": "^20.0.4",
-        "lint-staged": "^4.0.3",
-        "prettier-standard": "^6.0.0"
+  "name": "api-boilerplate",
+  "version": "0.0.1",
+  "description": "A HapiJS based boilerplate for faster starting a project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "format": "prettier-standard 'src/**/*.js'",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "linters": {
+      "src/**/*.js": [
+        "prettier-standard",
+        "git add"
+      ]
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/davorbadrov/api-boilerplate.git"
+  },
+  "keywords": [
+    "node",
+    "hapi",
+    "api"
+  ],
+  "author": "Davor Badrov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davorbadrov/api-boilerplate/issues"
+  },
+  "homepage": "https://github.com/davorbadrov/api-boilerplate#readme",
+  "dependencies": {
+    "blipp": "^2.3.0",
+    "boom": "^5.2.0",
+    "dotenv": "^4.0.0",
+    "eslint": "^4.4.1",
+    "good": "^7.2.0",
+    "good-console": "^6.4.0",
+    "hapi": "^16.5.2",
+    "joi": "^10.6.0",
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.14.3",
+    "jest": "^20.0.4",
+    "lint-staged": "^4.0.3",
+    "prettier-standard": "^6.0.0"
+  }
 }
