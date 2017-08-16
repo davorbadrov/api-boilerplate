@@ -1,7 +1,7 @@
-const dotenv = require('dotenv');
+const dotenv = require('dotenv')
 
 if (process.env.NODE_ENV !== 'production') {
-    const settings = dotenv.load();
+  const settings = dotenv.load()
 }
 
-require('./src');
+require('./src')
