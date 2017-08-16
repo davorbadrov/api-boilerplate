@@ -26,7 +26,6 @@ function initialize () {
           return reject(err)
         }
 
-        console.log(`Server running at: ${server.info.uri}`)
         return resolve(server)
       })
     })
