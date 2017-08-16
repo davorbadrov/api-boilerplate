@@ -4,15 +4,29 @@
     "description": "A HapiJS based boilerplate for faster starting a project",
     "main": "index.js",
     "scripts": {
-            "start": "node index.js",
-            "test": "jest --coverage",
-            "test:watch": "jest --watch"
+        "start": "node index.js",
+        "test": "jest --coverage",
+        "test:watch": "jest --watch",
+        "format": "prettier-standard 'src/**/*.js'",
+        "precommit": "lint-staged"
+    },
+    "lint-staged": {
+        "linters": {
+            "src/**/*.js": [
+                "prettier-standard",
+                "git add"
+            ]
+        }
     },
     "repository": {
         "type": "git",
         "url": "git+ssh://git@github.com/davorbadrov/api-boilerplate.git"
     },
-    "keywords": ["node", "hapi", "api"],
+    "keywords": [
+        "node",
+        "hapi",
+        "api"
+    ],
     "author": "Davor Badrov",
     "license": "MIT",
     "bugs": {
@@ -26,6 +40,9 @@
         "lodash": "^4.17.4"
     },
     "devDependencies": {
-        "jest": "^20.0.4"
+        "husky": "^0.14.3",
+        "jest": "^20.0.4",
+        "lint-staged": "^4.0.3",
+        "prettier-standard": "^6.0.0"
     }
 }
