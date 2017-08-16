@@ -34,7 +34,11 @@
     },
     "homepage": "https://github.com/davorbadrov/api-boilerplate#readme",
     "dependencies": {
+        "blipp": "^2.3.0",
+        "boom": "^5.2.0",
         "dotenv": "^4.0.0",
+        "good": "^7.2.0",
+        "good-console": "^6.4.0",
         "hapi": "^16.5.2",
         "joi": "^10.6.0",
         "lodash": "^4.17.4"
