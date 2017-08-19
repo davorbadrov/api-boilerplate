@@ -4,10 +4,16 @@ const config = getConfig(process.env)
 const server = new Hapi.Server()
 const plugins = require('./plugins')
 const user = require('./user')
+const db = require('./lib/db')(config)
 
 function initialize () {
   return new Promise((resolve, reject) => {
     server.connection({ port: config.appPort })
+
+    server.bind({
+      db
+    })
+
     server.register(plugins, err => {
       if (err) {
         return reject(err)

@@ -42,7 +42,9 @@
     "good-console": "^6.4.0",
     "hapi": "^16.5.2",
     "joi": "^10.6.0",
-    "lodash": "^4.17.4"
+    "knex": "^0.13.0",
+    "lodash": "^4.17.4",
+    "pg": "^7.1.2"
   },
   "devDependencies": {
     "eslint-config-standard": "^10.2.1",
