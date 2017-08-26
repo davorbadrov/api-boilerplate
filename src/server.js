@@ -4,6 +4,7 @@ const config = getConfig(process.env)
 const server = new Hapi.Server()
 const plugins = require('./plugins')
 const user = require('./user')
+const { setupAuthentication } = require('./lib/authentication')
 const db = require('./lib/db')(config)
 
 function initialize () {
@@ -19,10 +20,12 @@ function initialize () {
         return reject(err)
       }
 
+      setupAuthentication(server, config)
+
       server.route(user.routes)
 
       // skip starting the server for tests
-      // we can use server.inject() to test endpoints
+      // server.inject() can be used to test endpoints
       if (config.nodeEnv === 'test') {
         return resolve(server)
       }

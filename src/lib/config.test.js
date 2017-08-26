@@ -8,7 +8,8 @@ test('config is properly processed', () => {
     DB_PORT: '5432',
     DB_USER: 'database_username',
     DB_PASSWORD: 'database_password',
-    DB_ENABLE_DEBUG: false
+    DB_ENABLE_DEBUG: false,
+    DB_USER: 'secret'
   })
 
   const expected = {
@@ -18,7 +19,8 @@ test('config is properly processed', () => {
     dbPort: 5432,
     dbUser: 'database_username',
     dbPassword: 'database_password',
-    dbEnableDebug: false
+    dbEnableDebug: false,
+    DB_USER: 'secret'
   }
 
   expect(config).toEqual(expected)

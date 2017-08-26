@@ -25,7 +25,8 @@ function validateEnvVariables (enviromentVariables) {
     DB_PORT: joi.number().required(),
     DB_USER: joi.string().required(),
     DB_PASSWORD: joi.string().allow('').required(),
-    DB_ENABLE_DEBUG: joi.boolean().default(false).optional()
+    DB_ENABLE_DEBUG: joi.boolean().default(false).optional(),
+    SECRET: joi.string().required()
   }
 
   const envVars = pick(enviromentVariables, Object.keys(configSchemaParams))

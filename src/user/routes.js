@@ -7,9 +7,18 @@ const routes = [
     path: '/users/login',
     config: {
       description: 'login user',
-      handler: function (request, reply) {
-        const context = this
-        reply(Boom.notImplemented('Method not implemented'))
+      auth: false,
+      handler: async function (request, reply) {
+        try {
+          const context = this
+          const { email, password } = request.payload
+          console.log('request.payload', request.payload)
+          const userAndToken = await controllers.login(context, email, password)
+          reply(userAndToken)
+        } catch (err) {
+          console.error(err)
+          reply(err)
+        }
       }
     }
   },
@@ -17,10 +26,18 @@ const routes = [
     method: 'POST',
     path: '/users/register',
     config: {
+      auth: false,
       description: 'register user',
-      handler: function (request, reply) {
-        console.log('request.body', request.body)
-        reply(Boom.notImplemented('Method not implemented'))
+      handler: async function (request, reply) {
+        try {
+          const context = this
+          const data = request.payload
+          const registeredUser = await controllers.register(context, data)
+          reply(registeredUser)
+        } catch (err) {
+          console.error(err)
+          reply(err)
+        }
       }
     }
   },
@@ -29,10 +46,15 @@ const routes = [
     path: '/users',
     config: {
       description: 'get all users',
-      handler: function (request, reply) {
-        const context = this
-        const users = controllers.getAll(context)
-        reply(users)
+      handler: async function (request, reply) {
+        try {
+          const context = this
+          const users = await controllers.getAll(context)
+          reply(users)
+        } catch (err) {
+          console.error(err)
+          reply(err)
+        }
       }
     }
   },
@@ -49,7 +71,7 @@ const routes = [
           reply(createdUser)
         } catch (err) {
           console.error(err)
-          reply(Boom.badImplementation())
+          reply(err)
         }
       }
     }
@@ -59,8 +81,17 @@ const routes = [
     path: '/users/{id}',
     config: {
       description: 'update user',
-      handler: function (request, reply) {
-        reply(Boom.notImplemented('Method not implemented'))
+      handler: async function (request, reply) {
+        try {
+          const context = this
+          const userId = request.params.id
+          const data = request.payload
+          const createdUser = await controllers.update(context, userId, data)
+          reply(createdUser)
+        } catch (err) {
+          console.error(err)
+          reply(err)
+        }
       }
     }
   }

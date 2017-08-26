@@ -1,8 +1,21 @@
 const Good = require('good')
 
-const goodOptions = {
+const options = {
+  ops: {
+    interval: 0
+  },
   reporters: {
     consoleReporter: [
+      {
+        module: 'good-squeeze',
+        name: 'Squeeze',
+        args: [
+          {
+            log: '*',
+            response: '*'
+          }
+        ]
+      },
       {
         module: 'good-console'
       },
@@ -13,5 +26,5 @@ const goodOptions = {
 
 module.exports = {
   register: Good,
-  goodOptions
+  options
 }
