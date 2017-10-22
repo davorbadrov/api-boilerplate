@@ -15,17 +15,17 @@ function update ({ db }, id, userData) {
 }
 
 async function login ({ db }, email, password) {
-  const userModel = await db.user.scope('safe').findOne({ where: { email } })
-  const user = userModel.get({ plain: true })
+  let user = await db.user.scope('safe').findOne({ where: { email } })
 
   if (!user) {
-    throw new Boom("Email doesn't exist")
+    throw Boom.unauthorized("Email doesn't exist")
   }
 
+  user = user.get({ plain: true })
   const doPasswordsMatch = await verifyPassword(password, user.password)
 
   if (!doPasswordsMatch) {
-    throw new Boom('Password is incorrect')
+    throw Boom.unauthorized('Password is incorrect')
   }
 
   delete user.password
