@@ -3,7 +3,7 @@ const controllers = require('./controller')
 const routes = [
   {
     method: 'POST',
-    path: '/users/login',
+    path: '/api/users/login',
     config: {
       description: 'login user',
       auth: false,
@@ -23,7 +23,7 @@ const routes = [
   },
   {
     method: 'POST',
-    path: '/users/register',
+    path: '/api/users/register',
     config: {
       auth: false,
       description: 'register user',
@@ -42,7 +42,7 @@ const routes = [
   },
   {
     method: 'GET',
-    path: '/users',
+    path: '/api/users',
     config: {
       description: 'get all users',
       handler: async function (request, reply) {
@@ -59,7 +59,7 @@ const routes = [
   },
   {
     method: 'POST',
-    path: '/users',
+    path: '/api/users',
     config: {
       description: 'create user',
       handler: async function (request, reply) {
@@ -77,7 +77,7 @@ const routes = [
   },
   {
     method: 'PUT',
-    path: '/users/{id}',
+    path: '/api/users/{id}',
     config: {
       description: 'update user',
       handler: async function (request, reply) {
