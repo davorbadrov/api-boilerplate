@@ -1,14 +1,20 @@
-const knex = require('knex')
+const Sequelize = require('sequelize')
 
 module.exports = config => {
-  return knex({
-    client: 'pg',
-    connection: {
+  const sequelize = new Sequelize(
+    config.dbName,
+    config.dbUser,
+    config.dbPassword,
+    {
       host: config.dbHost,
-      user: config.dbUser,
-      password: config.dbPassword,
-      database: config.dbName,
-      debug: config.dbEnableDebug
+      dialect: 'postgres',
+      pool: {
+        max: 10,
+        min: 0,
+        idle: 10000
+      }
     }
-  })
+  )
+
+  return sequelize
 }

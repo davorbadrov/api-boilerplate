@@ -8,7 +8,9 @@
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "format": "prettier-standard 'src/**/*.js'",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "migrate": "sequelize db:migrate:all",
+    "seed": "sequelize db:seed:all"
   },
   "lint-staged": {
     "linters": {
@@ -46,9 +48,11 @@
     "hapi-auth-jwt2": "^7.3.0",
     "joi": "^10.6.0",
     "jsonwebtoken": "^7.4.3",
-    "knex": "^0.13.0",
     "lodash": "^4.17.4",
-    "pg": "^7.1.2",
+    "pg": "^7.3.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.15.1",
+    "sequelize-cli": "^3.0.0",
     "uuid": "^3.1.0"
   },
   "devDependencies": {

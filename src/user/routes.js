@@ -1,5 +1,4 @@
 const controllers = require('./controller')
-const Boom = require('boom')
 
 const routes = [
   {

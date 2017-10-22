@@ -1,41 +1,27 @@
+const Boom = require('boom')
 const { createToken } = require('../lib/authentication')
 const { verifyPassword, generatePasswordHash } = require('../lib/password')
 
 function getAll ({ db }) {
-  return db.select().from('user')
+  return db.user.findAll()
 }
 
 function create ({ db }, userData) {
-  return db('user')
-    .returning(['id', 'name', 'email', 'created_at', 'updated_at'])
-    .insert(userData)
+  return db.user.create(userData)
 }
 
 function update ({ db }, id, userData) {
-  return db('user')
-    .where({ id })
-    .returning(['id', 'name', 'email', 'created_at', 'updated_at'])
-    .update(userData)
+  return db.user.update({ where: { id } }, userData)
 }
 
 async function login ({ db }, email, password) {
-  const user = await db
-    .first('id', 'name', 'email', 'password')
-    .where({ email })
-    .from('user')
+  const userModel = await db.user.scope('safe').findOne({ where: { email } })
+  const user = userModel.get({ plain: true })
 
   if (!user) {
     throw new Boom("Email doesn't exist")
   }
 
-  console.log(
-    'password',
-    password,
-    'user',
-    user,
-    'user.password',
-    user.password
-  )
   const doPasswordsMatch = await verifyPassword(password, user.password)
 
   if (!doPasswordsMatch) {

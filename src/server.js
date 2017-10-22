@@ -5,7 +5,7 @@ const server = new Hapi.Server()
 const plugins = require('./plugins')
 const user = require('./user')
 const { setupAuthentication } = require('./lib/authentication')
-const db = require('./lib/db')(config)
+const db = require('./models')
 
 function initialize () {
   return new Promise((resolve, reject) => {
