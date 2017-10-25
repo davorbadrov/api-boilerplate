@@ -1,3 +1,4 @@
+const Boom = require('boom')
 const controllers = require('./controller')
 
 const routes = [
@@ -53,6 +54,59 @@ const routes = [
         } catch (err) {
           console.error(err)
           reply(err)
+        }
+      }
+    }
+  },
+  {
+    method: 'GET',
+    path: '/api/users/{id}',
+    config: {
+      description: 'get single user',
+      handler: async function (request, reply) {
+        try {
+          const context = this
+          const userId = request.params.id
+          const user = await controllers.getOne(context, userId)
+
+          if (!user) {
+            return reply(Boom.notFound('The user cannot be found.'))
+          }
+
+          reply(user)
+        } catch (err) {
+          console.error(err)
+          reply(err)
+        }
+      }
+    }
+  },
+  {
+    method: 'GET',
+    path: '/api/users/me',
+    config: {
+      description: 'get logged in user',
+      handler: async function (request, reply) {
+        try {
+          const context = this
+
+          const userCredentials = request.auth.credentials
+          const userId = userCredentials && userCredentials.userId
+
+          if (!userId) {
+            return reply(Boom.badRequest("There's an error with your login"))
+          }
+
+          const user = await controllers.getOne(context, userId)
+
+          if (!user) {
+            return reply(Boom.notFound('Your profile seems to be missing.'))
+          }
+
+          return reply(user)
+        } catch (err) {
+          console.error(err)
+          return reply(err)
         }
       }
     }

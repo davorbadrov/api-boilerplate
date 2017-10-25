@@ -6,6 +6,10 @@ function getAll ({ db }) {
   return db.user.findAll()
 }
 
+function getOne ({ db }, userId) {
+  return db.user.findById(userId)
+}
+
 function create ({ db }, userData) {
   return db.user.create(userData)
 }
@@ -46,6 +50,7 @@ async function register ({ db }, userData) {
 
 module.exports = {
   getAll,
+  getOne,
   create,
   update,
   login,
