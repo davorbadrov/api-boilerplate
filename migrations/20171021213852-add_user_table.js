@@ -23,6 +23,10 @@ module.exports = {
         type: Sequelize.ENUM('admin', 'basic'),
         allowNull: false
       },
+      avatar: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE
     })

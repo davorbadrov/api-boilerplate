@@ -13,6 +13,7 @@ module.exports = {
       email: 'john@demo.com',
       password: adminPasswordHash,
       userType: 'admin',
+      avatar: '/uploads/default-avatar.png',
       createdAt: dateNow,
       updatedAt: dateNow
     }
@@ -22,6 +23,7 @@ module.exports = {
       email: 'jack@demo.com',
       password: basicPasswordHash,
       userType: 'basic',
+      avatar: '/uploads/default-avatar.png',
       createdAt: dateNow,
       updatedAt: dateNow
     }

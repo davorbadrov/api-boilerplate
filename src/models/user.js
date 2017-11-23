@@ -16,6 +16,9 @@ const UserModel = (sequelize, DataTypes) => {
       password: {
         type: DataTypes.STRING
       },
+      avatar: {
+        type: DataTypes.STRING
+      },
       userType: {
         type: DataTypes.ENUM('admin', 'basic'),
         allowNull: false
@@ -32,7 +35,7 @@ const UserModel = (sequelize, DataTypes) => {
       // updatedAt: 'updated_at',
       // we don't want to return the password hash by default
       defaultScope: {
-        attributes: ['id', 'name', 'email', 'userType']
+        attributes: ['id', 'name', 'email', 'userType', 'avatar']
       },
       scopes: {
         safe: {
