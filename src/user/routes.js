@@ -1,5 +1,7 @@
 const Boom = require('boom')
 const controllers = require('./controller')
+const getConfig = require('../lib/config')
+const config = getConfig(process.env)
 
 const routes = [
   {
@@ -28,6 +30,12 @@ const routes = [
     config: {
       auth: false,
       description: 'register user',
+      payload: {
+        output: 'stream',
+        parse: true,
+        allow: ['multipart/form-data'],
+        maxBytes: config.maxUploade
+      },
       handler: async function (request, reply) {
         try {
           const context = this

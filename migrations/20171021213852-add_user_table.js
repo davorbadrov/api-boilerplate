@@ -13,7 +13,8 @@ module.exports = {
       },
       email: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       password: {
         type: Sequelize.STRING,
@@ -21,7 +22,8 @@ module.exports = {
       },
       userType: {
         type: Sequelize.ENUM('admin', 'basic'),
-        allowNull: false
+        allowNull: false,
+        defaultValue: 'basic'
       },
       avatar: {
         type: Sequelize.STRING,
@@ -29,7 +31,7 @@ module.exports = {
       },
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE
-    })
+    });
   },
 
   down: (queryInterface, Sequelize) => {

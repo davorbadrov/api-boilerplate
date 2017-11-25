@@ -14,6 +14,8 @@ module.exports = function getConfig (enviromentVariables) {
 }
 
 function validateEnvVariables (enviromentVariables) {
+  const TEN_MEGABYTES = 10485760
+
   const configSchemaParams = {
     NODE_ENV: joi
       .string()
@@ -24,13 +26,26 @@ function validateEnvVariables (enviromentVariables) {
     DB_NAME: joi.string().required(),
     DB_PORT: joi.number().required(),
     DB_USER: joi.string().required(),
-    DB_PASSWORD: joi.string().allow('').required(),
-    DB_ENABLE_DEBUG: joi.boolean().default(false).optional(),
-    SECRET: joi.string().required()
+    DB_PASSWORD: joi
+      .string()
+      .allow('')
+      .required(),
+    DB_ENABLE_DEBUG: joi
+      .boolean()
+      .default(false)
+      .optional(),
+    SECRET: joi.string().required(),
+    MAX_UPLOAD: joi
+      .number()
+      .default(TEN_MEGABYTES)
+      .optional()
   }
 
   const envVars = pick(enviromentVariables, Object.keys(configSchemaParams))
-  const envVarsSchema = joi.object().keys(configSchemaParams).required()
+  const envVarsSchema = joi
+    .object()
+    .keys(configSchemaParams)
+    .required()
 
   const { error, value: validatedEnvironmentVariables } = joi.validate(
     envVars,

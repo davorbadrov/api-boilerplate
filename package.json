@@ -9,7 +9,7 @@
     "test:watch": "jest --watch",
     "format": "prettier-standard 'src/**/*.js'",
     "precommit": "lint-staged",
-    "migrate": "sequelize db:migrate:all",
+    "migrate": "sequelize db:migrate",
     "seed": "sequelize db:seed:all",
     "debug": "node --nolazy --inspect-brk index.js"
   },

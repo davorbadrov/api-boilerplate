@@ -1,6 +1,7 @@
 const Boom = require('boom')
 const { createToken } = require('../lib/authentication')
 const { verifyPassword, generatePasswordHash } = require('../lib/password')
+const { handleDatabaseError } = require('../lib/errors')
 
 function getAll ({ db }) {
   return db.user.findAll()
@@ -10,12 +11,22 @@ function getOne ({ db }, userId) {
   return db.user.findById(userId)
 }
 
-function create ({ db }, userData) {
-  return db.user.create(userData)
+async function create ({ db }, userData) {
+  try {
+    const createdUser = await db.user.create(userData)
+    return createdUser
+  } catch (error) {
+    handleDatabaseError(error)
+  }
 }
 
-function update ({ db }, id, userData) {
-  return db.user.update({ where: { id } }, userData)
+async function update ({ db }, id, userData) {
+  try {
+    const updatedUser = await db.user.update({ where: { id } }, userData)
+    return updatedUser
+  } catch (error) {
+    handleDatabaseError(error)
+  }
 }
 
 async function login ({ db }, email, password) {

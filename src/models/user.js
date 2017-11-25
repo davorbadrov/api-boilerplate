@@ -11,7 +11,8 @@ const UserModel = (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       email: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        unique: true
       },
       password: {
         type: DataTypes.STRING
@@ -21,7 +22,8 @@ const UserModel = (sequelize, DataTypes) => {
       },
       userType: {
         type: DataTypes.ENUM('admin', 'basic'),
-        allowNull: false
+        allowNull: false,
+        defaultValue: 'basic'
       }
     },
     {
